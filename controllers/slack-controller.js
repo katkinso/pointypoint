@@ -21,7 +21,7 @@ var urlencodedParser = bodyParser.urlencoded({extended:false})
     })
 
     app.get('/',function(req,res){
-        res.render('index')
+        res.render('index',{'userName':'','point':''})
     })
 
 }//controller

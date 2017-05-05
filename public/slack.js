@@ -1,5 +1,18 @@
 $(document).ready(function(){
 
+  $.ajax({
+    type: 'POST',
+    url: '/',
+    data: {'filmTitle':imdbFilmTitle},
+    success: function(data){
+      //do something with the data via front-end framework
+      console.log(data)
+       location.reload();
+    }
+  });
+
+  
+
 
   $('form#addImdbFilm').on('submit', function(){
 

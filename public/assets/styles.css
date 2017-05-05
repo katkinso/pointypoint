@@ -1,0 +1,63 @@
+/*!
+ * Start Bootstrap - Shop Item (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #262626;
+    color: #ffffff;
+}
+
+.thumbnail img {
+    width: 100%;
+
+}
+
+.navbar-color{
+  background-color: #222;
+  border-color: #080808;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 10px;
+    background-color: #262626;
+    color: #fff;
+    border: 1px solid #686868;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+    color: #cccccc;
+}
+
+.thumbnail img{
+    width:auto; /* you can use % */
+    height: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.navbar-header h1{
+  color: #40A7F4;
+}
+
+h3, h4{
+  color: #ffffff;
+}
+
+.text-danger {
+    color: #ED1C24;
+}

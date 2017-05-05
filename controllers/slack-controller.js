@@ -10,7 +10,9 @@ var slackController = function(app){
 var urlencodedParser = bodyParser.urlencoded({extended:false})
 
     app.post('/',urlencodedParser,function(req,res){
-        res.render('index',{slack:req.body})
+
+        console.log(req.body)
+        res.render('index')
     })
 
     app.get('/',function(req,res){

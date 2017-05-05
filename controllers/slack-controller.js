@@ -11,12 +11,13 @@ var urlencodedParser = bodyParser.urlencoded({extended:false})
 
     app.post('/',urlencodedParser,function(req,res){
 
-        console.log(req.body.token)
-        console.log('0I7TFXDQawvFZC7uW4l4zxZR')
-        console.log(req.body)
+        if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
+          console.log(req.body)
+          res.render('index',{'userName':req.body.user_name,'point':req.body.text})
+        }else{
+          res.render('index')
+        }
 
-
-        res.render('index')
     })
 
     app.get('/',function(req,res){

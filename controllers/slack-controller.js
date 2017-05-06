@@ -13,14 +13,17 @@ var urlencodedParser = bodyParser.urlencoded({extended:false})
 
         if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
           console.log(req.body)
-          res.render('index',{'userName':req.body.user_name,'point':req.body.text})
+
+          res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
         }else{
-          res.render('index')
+          res.redirect('/')
         }
 
     })
 
     app.get('/',function(req,res){
+        console.log(req.body)
+        console.log(res.body)
         res.render('index',{'userName':'','point':''})
     })
 

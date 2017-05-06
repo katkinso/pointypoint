@@ -12,6 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({extended:false})
     app.post('/',urlencodedParser,function(req,res){
 
         if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
+          res.send('You pointed!')
           res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
         }else{
           res.redirect('/')

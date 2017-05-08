@@ -3,11 +3,11 @@ var bodyParser = require('body-parser')
 var Promise = require('bluebird')
 var request = Promise.promisifyAll(require("request"), {multiArgs: true})
 
-var slackController = function(app){
-  console.log('in slack controller')
 
 
-var urlencodedParser = bodyParser.urlencoded({extended:false})
+var slackController = function(app,io){
+
+    var urlencodedParser = bodyParser.urlencoded({extended:false})
 
     app.post('/',urlencodedParser,function(req,res){
 
@@ -21,10 +21,21 @@ var urlencodedParser = bodyParser.urlencoded({extended:false})
     })
 
     app.get('/',function(req,res){
-        console.log(req.body)
-        console.log(res.body)
         res.render('index',{'userName':'','point':''})
     })
+
+    //Whenever someone connects this gets executed
+    io.on('connection', function(socket){
+        console.log('A user connected');
+
+        //Whenever someone disconnects this piece of code executed
+        socket.on('disconnect', function () {
+          console.log('A user disconnected');
+        });
+
+    });
+
+
 
 }//controller
 

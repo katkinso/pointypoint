@@ -9,31 +9,47 @@ var slackController = function(app,io){
 
     var urlencodedParser = bodyParser.urlencoded({extended:false})
 
+    // app.post('/',urlencodedParser,function(req,res){
+    //
+    //     if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
+    //       res.send('You pointed!')
+    //       res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
+    //     }else{
+    //       res.redirect('/')
+    //     }
+    //
+    // })
+
+    app.get('/',function(req,res){
+        res.render('index',{'userName':'','point':''})
+    })
+
+
     app.post('/',urlencodedParser,function(req,res){
 
         if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
           res.send('You pointed!')
-          res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
+
+          io.on('connection', function(socket){
+            console.log('A user connected');
+
+              //Sending an object when emmiting an event
+            socket.emit('point', { point: req.body.text})
+            socket.on('disconnect', function () {
+              console.log('A user disconnected');
+            });
+          });
+
+          // res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
         }else{
           res.redirect('/')
         }
 
     })
 
-    app.get('/',function(req,res){
-        res.render('index',{'userName':'','point':''})
-    })
 
-    //Whenever someone connects this gets executed
-    io.on('connection', function(socket){
-        console.log('A user connected');
 
-        //Whenever someone disconnects this piece of code executed
-        socket.on('disconnect', function () {
-          console.log('A user disconnected');
-        });
 
-    });
 
 
 

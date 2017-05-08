@@ -9,6 +9,19 @@ var slackController = function(app,io){
 
     var urlencodedParser = bodyParser.urlencoded({extended:false})
 
+
+    var runSocketIO = function(body){
+      io.on('connection', function(socket){
+        console.log('A user connected');
+
+          //Sending an object when emmiting an event
+        socket.emit('point', { point: body})
+        socket.on('disconnect', function () {
+          console.log('A user disconnected');
+        });
+      });
+    }
+
     // app.post('/',urlencodedParser,function(req,res){
     //
     //     if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
@@ -29,24 +42,13 @@ var slackController = function(app,io){
 
         if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
           res.send('You pointed!')
-
-          io.on('connection', function(socket){
-            console.log('A user connected');
-
-              //Sending an object when emmiting an event
-            socket.emit('point', { point: req.body.text})
-            socket.on('disconnect', function () {
-              console.log('A user disconnected');
-            });
-          });
-
+          runSocketIO(req.body)
           // res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
         }else{
           res.redirect('/')
         }
 
     })
-
 
 
 

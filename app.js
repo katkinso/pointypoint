@@ -3,8 +3,6 @@ var app = express()
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
-
-
 var slackController = require('./controllers/slack-controller')
 var bodyParser = require('body-parser')
 // create application/json parser

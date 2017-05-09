@@ -19,7 +19,7 @@ var slackController = function(app,io){
 
     app.post('/',urlencodedParser,function(req,res){
 
-        if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
+        if (req.body.token == slack_token){
 
 
           var message = {

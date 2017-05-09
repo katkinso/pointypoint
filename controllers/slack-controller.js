@@ -5,6 +5,10 @@ var request = Promise.promisifyAll(require("request"), {multiArgs: true})
 
 var slack_token = process.env['SLACK_TOKEN']
 // console.log('slacktoken= ' + slack_token)
+var team_id = ''
+var webhook_token = ''
+var slack_post_url = ''
+
 
 var slackController = function(app,io){
 
@@ -24,6 +28,7 @@ var slackController = function(app,io){
             'userName': req.body.user_name,
             'channel': req.body.channel_name
           }
+          console.log(req.body)
 
           io.sockets.emit('message', message);
           res.send('You pointed!')

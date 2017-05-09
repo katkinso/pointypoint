@@ -20,6 +20,7 @@
     "mongoose": "^4.9.4",
     "nodemon": "^1.11.0",
     "request": "^2.81.0",
+    "slack-client": "^2.0.6",
     "socket.io": "^1.7.4"
   }
 }

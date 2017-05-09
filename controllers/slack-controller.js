@@ -35,7 +35,7 @@ var slackController = function(app,io){
     // })
 
     app.get('/',function(req,res){
-        res.render('index',{'userName':'','point':''})
+        res.render('index')
     })
 
 
@@ -43,7 +43,14 @@ var slackController = function(app,io){
 
         if (req.body.token == '0I7TFXDQawvFZC7uW4l4zxZR'){
           res.send('You pointed!')
-          io.sockets.emit("foo", req.body);
+
+          var message = {
+            'points': req.body.text,
+            'userName': req.body.user_name,
+            'channel': req.body.channel_name
+          }
+
+          io.sockets.emit('message', message);
           // res.redirect('/',{'userName':req.body.user_name,'point':req.body.text})
         }else{
           res.redirect('/')

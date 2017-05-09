@@ -18,10 +18,11 @@
       // socket.on('point', function(data){document.write(data.point)});
       // socket.on("foo", function(message) { console.log("foo: ", message) });
 
-          socket.on("foo", function(message) {
+          socket.on("message", function(message) {
 
-            console.log("foo: ", message)
-            $('#messages').append(message.text)
+            console.log("message: ", message)
+            $('#messages').append(message.userName + ' | ' + message.points)
+            $('#messages').append('<br />')
           });
 
 

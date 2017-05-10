@@ -31,7 +31,8 @@ var slackController = function(app,io){
 
     var urlencodedParser = bodyParser.urlencoded({extended:false})
     var numPeople
-    var numVotes = 0;
+    var numVotes = 0
+    var votingComplete = false
 
 
     app.get('/',function(req,res){
@@ -48,15 +49,17 @@ var slackController = function(app,io){
           var message = {
             'points': req.body.text,
             'userName': req.body.user_name,
-            'channel': req.body.channel_name
+            'channel': req.body.channel_name,
+            'voting_complete': votingComplete
           }
 
-
+          numVotes++
 
           io.sockets.emit('message', message);
           res.send('Thanks - You pointed!')
-          numVotes++
-          console.log(numVotes)
+
+          console.log('numVotes: ' + numVotes)
+          console.log('numPeople: ' + numPeople)
 
         }else{
 

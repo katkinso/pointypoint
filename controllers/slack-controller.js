@@ -45,7 +45,7 @@ var slackController = function(app,io){
 
         if (req.body.token == slack_token){
 
-          console.log(req.body)
+          console.log(res.body)
 
           var message = {
             'points': req.body.text,

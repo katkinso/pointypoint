@@ -2,11 +2,13 @@ var express = require('express')
 var app = express()
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-
-var slackController = require('./controllers/slack-controller')
-var bodyParser = require('body-parser')
+// var bodyParser = require('body-parser')
 // create application/json parser
-var jsonParser = bodyParser.json()
+// var jsonParser = bodyParser.json()
+var slackController = require('./controllers/slack-controller')
+
+
+
 
 app.set('port', (process.env.PORT || 5000));
 app.set('view engine','ejs')

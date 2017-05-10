@@ -18,9 +18,13 @@
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "mongoose": "^4.9.4",
+    "node-rest-client": "^3.1.0",
     "nodemon": "^1.11.0",
     "request": "^2.81.0",
     "slack-client": "^2.0.6",
     "socket.io": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

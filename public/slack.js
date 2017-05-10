@@ -1,32 +1,36 @@
 $(document).ready(function(){
 
-  $.ajax({
-    type: 'POST',
-    url: '/',
-    data: {'filmTitle':imdbFilmTitle},
-    success: function(data){
-      //do something with the data via front-end framework
-      console.log(data)
-       location.reload();
-    }
-  });
 
-  
+  var socket = io();
+// socket.on('point', function(data){document.write(data.point)});
+// socket.on("foo", function(message) { console.log("foo: ", message) });
+
+    socket.on("message", function(message) {
+
+      console.log("message: ", message)
+      $('#messages').append(message.userName + ' | ' + message.points)
+      $('#messages').append('<br />')
+    });
 
 
-  $('form#addImdbFilm').on('submit', function(){
+  $('form#addTask').on('submit', function(){
 
-      var imdbFilmTitle = $('#imdbFilmTitle').val()
-      console.log(imdbFilmTitle)
+      var taskName = $('#task_name').val()
+
 
       $.ajax({
         type: 'POST',
         url: '/',
-        data: {'filmTitle':imdbFilmTitle},
+        data: {'task_name':taskName},
         success: function(data){
           //do something with the data via front-end framework
-          console.log(data)
-           location.reload();
+          console.log(taskName)
+          var h3 = $('<h3>')
+
+          $('#messages').append(h3)
+          h3.append(taskName)
+
+          // location.reload();
         }
       });
 

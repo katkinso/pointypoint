@@ -14,16 +14,7 @@
     <title>Pointy Point</title>
     <script src="socket.io/socket.io.js"></script>
     <script>
-      var socket = io();
-      // socket.on('point', function(data){document.write(data.point)});
-      // socket.on("foo", function(message) { console.log("foo: ", message) });
 
-          socket.on("message", function(message) {
-
-            console.log("message: ", message)
-            $('#messages').append(message.userName + ' | ' + message.points)
-            $('#messages').append('<br />')
-          });
 
 
     </script>
@@ -61,14 +52,14 @@
 
             <h3>Enter a task to point...</h3><br />
 
-            <form class="form-inline">
-            <div class="form-group">
-
-                <!-- <label for="exampleInputEmail1">Thing you want to point</label> -->
-                <input type="text" class="form-control" id="task" placeholder="Thing to point">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <form id='addTask' class="form-inline">
+                <div class="input-group">
+                <input type="text" class="form-control" placeholder="Thing to point" id="task_name" value="My Task Default">
+                <span class="input-group-btn">
+                  <button class="btn btn-default btn-primary" type="submit">Add Task</button>
+                </span>
+                </div>
+          </form>
 
             <br /><hr />
 
@@ -96,7 +87,7 @@
     <!-- jQuery -->
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-    <!-- <script src='slack.js'></script> -->
+    <script src='slack.js'></script>
 
     <script>
 

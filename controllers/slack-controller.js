@@ -6,10 +6,10 @@ var client = new Client()
 // var request = Promise.promisifyAll(require("request"), {multiArgs: true})
 
 //slack toke for getting messages
-
+// xxxxx
 //LOCAL ONLY
 
-var slack_token = process.env['SLACK_TOKEN']
+var slack_token = process.env['SLACK_VERIFICATION_TOKEN']
 var slack_post_token = process.env['SLACK_POST_TOKEN']
 console.log(slack_post_token)
 //
@@ -30,7 +30,8 @@ var slack_args = {
 var slackController = function(app,io){
 
     var urlencodedParser = bodyParser.urlencoded({extended:false})
-
+    var numPeople
+    var numVotes = 0;
 
 
     app.get('/',function(req,res){
@@ -40,12 +41,9 @@ var slackController = function(app,io){
 
     app.post('/',urlencodedParser,function(req,res){
 
-
-        // console.log('retrun=' +  JSON.stringify(req.body))
+        //  console.log('retrun=' +  JSON.stringify(req.body))
 
         if (req.body.token == slack_token){
-
-          console.log(res.body)
 
           var message = {
             'points': req.body.text,
@@ -54,13 +52,19 @@ var slackController = function(app,io){
           }
 
 
+
           io.sockets.emit('message', message);
-          res.send('You pointed!')
+          res.send('Thanks - You pointed!')
+          numVotes++
+          console.log(numVotes)
 
         }else{
 
             //set the message you want to post to slack
             slack_args.data.text = req.body.task_name
+            numPeople = req.body.num_people
+
+            if (!numPeople){ res.render('index') }
 
 
             client.post("https://hooks.slack.com/services/${team_id}/${channel_id}/${slack_post_token}", slack_args, function (data, response) {

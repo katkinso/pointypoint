@@ -16,15 +16,16 @@ $(document).ready(function(){
   $('form#addTask').on('submit', function(){
 
       var taskName = $('#task_name').val()
+      var numPeople = $('#num_people').val()
+      console.log('front: = ' + numPeople)
 
 
       $.ajax({
         type: 'POST',
         url: '/',
-        data: {'task_name':taskName},
+        data: {'task_name':taskName,'num_people':numPeople},
         success: function(data){
           //do something with the data via front-end framework
-          console.log(taskName)
           var h3 = $('<h3>')
 
           $('#messages').append(h3)

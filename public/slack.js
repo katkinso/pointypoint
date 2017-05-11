@@ -8,7 +8,7 @@ $(document).ready(function(){
     socket.on("message", function(message) {
 
       console.log("message: ", message)
-      $('#messages').append(message.userName + ' | ' + message.points)
+      $('#messages').append(`message.userName | message.points`)
       $('#messages').append('<br />')
     });
 

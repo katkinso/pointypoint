@@ -8,10 +8,6 @@ var client = new Client()
 var utils = require('../utils/utils')
 
 
-
-//slack toke for getting messages
-
-//LOCAL ONLY
 var slack_token = process.env['SLACK_VERIFICATION_TOKEN']
 var slack_post_token = process.env['SLACK_POST_TOKEN']
 //
@@ -22,7 +18,6 @@ var slack_args = {
       "text": "I am a test message x http://slack.com"
   }
 }
-
 
 
 // https://hooks.slack.com/services/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
@@ -66,15 +61,11 @@ var slackController = function(app,io){
           io.sockets.emit('message', message);
           res.send(`Thanks ${message.userName} voting recorded!`)
 
-          console.log('numVotes: ' + numVotes)
-          console.log('numPeople: ' + numPeople)
-
         }else{
 
             //set the message you want to post to slack
             slack_args.data.text = req.body.task_name
             numPeople = req.body.num_people
-            uuid = utils.generateUUID()
 
             if (!numPeople){ res.render('index') }
 

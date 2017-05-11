@@ -52,7 +52,7 @@ var slackController = function(app,io){
               votingComplete = true
           }
           if (numVotes == 1){
-            var uuid = util.generateUUID()
+            var uuid = utils.generateUUID()
           }
 
           var message = {

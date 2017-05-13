@@ -1,15 +1,19 @@
 $(document).ready(function(){
 
+    //instatntiate socket.io
+    var socket = io();
 
-  var socket = io();
-// socket.on('point', function(data){document.write(data.point)});
-// socket.on("foo", function(message) { console.log("foo: ", message) });
-
+    //render voting messages onto screen
     socket.on("message", function(message) {
 
+      $('<h3>').attr('id',message.uuid)
+
+      var div = $('<div />')
+      $(div).attr('id',message.uuid)
+      $(div).append(message.uuid + ' | ' + message.userName + ' | ' + message.points + ' | ' + message.voting_complete + '<br />')
+      $('#main').append(div)
+
       console.log("message: ", message)
-      $('#messages').append(message.uuid + ' | ' + message.userName + ' | ' + message.points + ' | ' + message.voting_complete)
-      $('#messages').append('<br />')
     });
 
 
@@ -27,8 +31,7 @@ $(document).ready(function(){
         success: function(data){
           //do something with the data via front-end framework
           var h3 = $('<h3>')
-
-          $('#messages').append(h3)
+          $('#main').append(h3)
           h3.append(taskName)
 
           // location.reload();

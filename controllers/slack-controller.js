@@ -30,6 +30,7 @@ var slackController = function(app,io){
     var numPeople
     var numVotes = 0
     var votingComplete = false
+    var uuid = ''
 
 
     app.get('/',function(req,res){
@@ -39,16 +40,19 @@ var slackController = function(app,io){
 
     app.post('/',urlencodedParser,function(req,res){
 
-        if (req.body.token == slack_token){
+        if (req.body.token == slack_token && req.body.token){
 
+          //count num votes
           numVotes++
 
+          //tell if voting is done
           if (numVotes == numPeople){
               votingComplete = true
           }
-          if (numVotes == 1){
-            var uuid = utils.generateUUID()
-          }
+
+          // if (numVotes == 1){
+          //   var uuid = utils.generateUUID()
+          // }
 
           var message = {
             'points': req.body.text,
@@ -63,6 +67,7 @@ var slackController = function(app,io){
 
         }else{
 
+
             //set the message you want to post to slack
             slack_args.data.text = req.body.task_name
             numPeople = req.body.num_people
@@ -76,9 +81,10 @@ var slackController = function(app,io){
             //console.log(response);
             });
 
+            uuid = utils.generateUUID()
           // res.redirect('/')
 
-            res.render('index',{task_to_point:req.body.task_name})
+            res.render('index',{task_to_point:req.body.task_name,uuid:uuid})
         }
     })
 

@@ -6,7 +6,7 @@ $(document).ready(function(){
     //render voting messages onto screen
     socket.on("message", function(message) {
 
-      $('<h3>').attr('id',message.uuid)
+      $('<h3 />').attr('id',message.uuid)
 
       var div = $('<div />')
       $(div).attr('id',message.uuid)

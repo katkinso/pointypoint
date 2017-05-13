@@ -71,6 +71,9 @@ var slackController = function(app,io){
             //set the message you want to post to slack
             slack_args.data.text = req.body.task_name
             numPeople = req.body.num_people
+            uuid = req.body.uuid
+
+            console.log(uuid)
 
             if (!numPeople){ res.render('index') }
 
@@ -81,7 +84,6 @@ var slackController = function(app,io){
             //console.log(response);
             });
 
-            uuid = utils.generateUUID()
           // res.redirect('/')
 
             res.render('index',{task_to_point:req.body.task_name,uuid:uuid})

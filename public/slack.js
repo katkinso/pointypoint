@@ -6,12 +6,9 @@ $(document).ready(function(){
     //render voting messages onto screen
     socket.on("message", function(message) {
 
-      $('<h3 />').attr('id',message.uuid)
-
-      var div = $('<div />')
-      $(div).attr('id',message.uuid)
-      $(div).append(message.uuid + ' | ' + message.userName + ' | ' + message.points + ' | ' + message.voting_complete + '<br />')
-      $('#main').append(div)
+      var p = $('<p />')
+      p.append(message.userName + ' | ' + message.points)
+      $('div#'+message.uuid).append(p)
 
       console.log("message: ", message)
     });
@@ -21,18 +18,25 @@ $(document).ready(function(){
 
       var taskName = $('#task_name').val()
       var numPeople = $('#num_people').val()
-      console.log('front: = ' + numPeople)
+      var uuid = generateUUID()
 
 
       $.ajax({
         type: 'POST',
         url: '/',
-        data: {'task_name':taskName,'num_people':numPeople},
+        data: {'task_name':taskName,'num_people':numPeople,'uuid':uuid},
         success: function(data){
           //do something with the data via front-end framework
+          var div = $('<div />')
           var h3 = $('<h3>')
-          $('#main').append(h3)
+
+          div.attr('id',uuid)
+          h3.attr('id',uuid)
           h3.append(taskName)
+
+          div.append(h3)
+          $('#main').append(div)
+
 
           // location.reload();
         }

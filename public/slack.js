@@ -31,9 +31,7 @@ $(document).ready(function(){
           var h3 = $('<h3>')
 
           div.attr('id',uuid)
-          h3.attr('id',uuid)
           h3.append(taskName)
-
           div.append(h3)
           $('#main').append(div)
 

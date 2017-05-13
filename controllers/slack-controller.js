@@ -46,6 +46,16 @@ var slackController = function(app,io){
           //count num votes
           numVotes++
 
+          var message = {
+            'points': req.body.text,
+            'userName': req.body.user_name,
+            'channel': req.body.channel_name,
+            'uuid':uuid,
+            'votingComplete':votingComplete
+          }
+
+          console.log(message)
+
           msg = `Thanks ${message.userName} voting recorded.`
 
           //tell if voting is done
@@ -56,13 +66,7 @@ var slackController = function(app,io){
 
           console.log(msg)
 
-          var message = {
-            'points': req.body.text,
-            'userName': req.body.user_name,
-            'channel': req.body.channel_name,
-            'uuid':uuid,
-            'votingComplete':votingComplete
-          }
+
 
           io.sockets.emit('message', message);
           res.send(msg)

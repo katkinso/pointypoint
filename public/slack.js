@@ -11,6 +11,7 @@ $(document).ready(function(){
       $('div#'+message.uuid).append(p)
 
       console.log("message: ", message)
+      
     });
 
 

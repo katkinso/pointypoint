@@ -42,28 +42,31 @@ var slackController = function(app,io){
 
         if (req.body.token == slack_token && req.body.token){
 
+          var msg = ''
           //count num votes
           numVotes++
+
+          msg = `Thanks ${message.userName} voting recorded.`
 
           //tell if voting is done
           if (numVotes == numPeople){
               votingComplete = true
+              msg += ` Voting Closed!`
           }
 
-          // if (numVotes == 1){
-          //   var uuid = utils.generateUUID()
-          // }
 
           var message = {
             'points': req.body.text,
             'userName': req.body.user_name,
             'channel': req.body.channel_name,
             'uuid':uuid,
-            'voting_complete': votingComplete
+            'votingComplete':votingComplete
           }
 
           io.sockets.emit('message', message);
-          res.send(`Thanks ${message.userName} voting recorded!`)
+          res.send(msg)
+
+
 
         }else{
 

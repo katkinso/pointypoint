@@ -33,13 +33,15 @@ function generateColors(length){
       'rgba(255, 159, 64, 1)'
     ]
 
-    return {'backgroundColors':JSON.stringify(backgroundColors),'borderColors':JSON.stringify(borderColors)}
+    return {'backgroundColors':JSON.backgroundColors,'borderColors':borderColors}
 }
 
 
 var buildChart = function(labels,points){
 
     var colors = generateColors(labels.length)
+
+    console.log(colors.borderColors)
 
     var json = {
         type: 'bar',

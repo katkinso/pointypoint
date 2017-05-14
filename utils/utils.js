@@ -56,6 +56,8 @@ function generateColors(colorsNeeded){
           i++
     }
 
+    console.log('backgroundColors= ' + backgroundColors)
+
     return {'backgroundColors':backgroundColors,'borderColors':borderColors}
 
 }

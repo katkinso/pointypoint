@@ -36,39 +36,28 @@ function generateColors(colorsNeeded){
 
     console.log('colorsNeeded= ' + colorsNeeded)
 
+    //if there are enough colors just return set
     if (colorsNeeded <= backgroundColorSet.length){
       return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
     }
 
-    // if (totalColors > backgroundColors.length){
-    //
-    //     var colorsNeeded = totalColors - backgroundColors.length
-    //
-    //     if (colorsNeeded < backgroundColors.length){
-    //         backgroundColors.push(backgroundColors.slice(0, colorsNeeded - 1))
-    //         borderColors.push(borderColors.slice(0, colorsNeeded - 1))
-    //     }else{
-    //         var backgroundColors2 = []
-    //         var i = 0
-    //
-    //         backgroundColors2.push(backgroundColors)
-    //
-    //         while (backgroundColors2.length < totalColors) {
-    //
-    //               if(backgroundColors.length == i){
-    //                 i=0
-    //               }
-    //               backgroundColors2.push(backgroundColors[i])
-    //               i++
-    //         }
-    //
-    //     }
-    //
-    // }
-    //
-    //
-    //
-    // return {'backgroundColors':backgroundColors,'borderColors':borderColors}
+    var backgroundColors = []
+    var borderColors = []
+    var i = 0
+
+    while (backgroundColors.length < colorsNeeded) {
+
+          if(backgroundColors.length == i){
+            i=0
+          }
+
+          backgroundColors.push(backgroundColorSet[i])
+          borderColors.push(borderColorSet[i])
+          i++
+    }
+
+    return {'backgroundColors':backgroundColors,'borderColors':borderColors}
+
 }
 
 

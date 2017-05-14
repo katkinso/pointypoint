@@ -14,7 +14,7 @@ $(document).ready(function(){
           $('div#'+message.uuid).append(p)
 
           var ctx = $('#'+uuid);
-          var eval(uuid) = new Chart(ctx, buildChart(message.userName,message.points));
+          var 123 = new Chart(ctx, buildChart(message.userName,message.points));
           // console.log(buildChart(labels,points))
 
       });

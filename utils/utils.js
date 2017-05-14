@@ -57,7 +57,8 @@ function generateColors(colorsNeeded){
 
           console.log('XXXXXXXXXXX i= ' + i)
           console.log('backgroundColors= ' + backgroundColors)
-          console.log('XXXXXXXXXXX - backgroundColorSet= ' + backgroundColorSet.slice(0, 0))
+          var temp = backgroundColorSet.slice(0, 0)
+          console.log('XXXXXXXXXXX - backgroundColorSet= ' + temp)
 
           i++
     }

@@ -49,9 +49,9 @@ function generateColors(colorsNeeded){
 
     while (backgroundColors.length < colorsNeeded) {
 
-          if(i >= backgroundColorSet.length){
-            i = 1;
-          }
+          // if(i >= backgroundColorSet.length){
+          //   i = 1;
+          // }
 
           backgroundColors.push(backgroundColorSet.slice(0, i))
           borderColors.push(borderColorSet.slice(0, i))

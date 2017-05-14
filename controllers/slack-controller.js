@@ -85,6 +85,7 @@ var slackController = function(app,io){
             message = ''
             userArr = []
             pointArr = []
+            votingComplete = false
           }
 
 

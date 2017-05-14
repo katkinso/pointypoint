@@ -17,8 +17,8 @@ $(document).ready(function(){
           $( "#myChart" ).remove()
           var canvas = $("<canvas />")
           canvas.attr('id','myChart')
-          canvas.attr('width',300)
-          canvas.attr('height',300)
+          canvas.attr('width',500)
+          canvas.attr('height',500)
           $('#main').append(canvas)
 
           console.log(JSON.stringify(json))

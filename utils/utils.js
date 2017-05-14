@@ -33,7 +33,7 @@ function generateColors(length){
       'rgba(255, 159, 64, 1)'
     ]
 
-    return {'backgroundColors':backgroundColors.join(),'borderColors':borderColors.join()}
+    return {'backgroundColors':backgroundColors,'borderColors':borderColors}
 }
 
 
@@ -56,7 +56,7 @@ var buildChart = function(labels,points){
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)'],
-                borderColor: [colors.borderColors],
+                borderColor: colors.borderColors,
                 borderWidth: 1
             }]
         },

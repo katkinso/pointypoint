@@ -49,10 +49,12 @@ function generateColors(colorsNeeded){
 
           if(backgroundColors.length == i){
             i=0
+            console.log('hit')
           }
 
-          backgroundColors.push(backgroundColorSet[i])
-          borderColors.push(borderColorSet[i])
+
+          backgroundColors.push(backgroundColorSet.slice(0, i))
+          borderColors.push(borderColorSet.slice(0, i))
           i++
     }
 

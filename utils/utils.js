@@ -16,7 +16,8 @@ var generateUUID = function () {
 
 function generateColors(length){
 
-    var backgroundColors = ['rgba(255, 99, 132, 0.2)',
+    var backgroundColors = [
+    'rgba(255, 99, 132, 0.2)',
     'rgba(54, 162, 235, 0.2)',
     'rgba(255, 206, 86, 0.2)',
     'rgba(75, 192, 192, 0.2)',
@@ -64,7 +65,7 @@ var buildChart = function(labels,points){
         }
     }
 
-    // console.log('json: ' + JSON.stringify(json))
+    console.log('json: ' + JSON.stringify(json))
 
     return json
 }//function

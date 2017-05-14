@@ -3,6 +3,15 @@ $(document).ready(function(){
       //instatntiate socket.io
       var socket = io();
 
+    //   var backgroundColorSet = [
+    //   'rgba(255, 99, 132, 0.2)',
+    //   'rgba(54, 162, 235, 0.2)'
+    //  ]
+     //
+    //  var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    //  var citrus = backgroundColorSet.slice(0, 1)
+     //
+    //  console.log(citrus)
 
 
 

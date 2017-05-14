@@ -44,8 +44,6 @@ var slackController = function(app,io){
 
         if (req.body.token == slack_token && req.body.token){
 
-
-
           //count num votes
           numVotes++
 
@@ -57,6 +55,7 @@ var slackController = function(app,io){
           if (numVotes == numPeople){
               votingComplete = true
               msg += ' Voting Closed!'
+              numVotes = 0
           }
 
           //buildChart

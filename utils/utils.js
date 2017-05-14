@@ -23,10 +23,10 @@ var buildChart = function(labels,points){
           height:300
         },
         data: {
-            labels: [labels],
+            labels: labels,
             datasets: [{
                 label: '# of Votes',
-                data: [points],
+                data: points,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

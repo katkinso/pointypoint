@@ -76,7 +76,8 @@ var slackController = function(app,io){
           }
 
 
-          console.log(chart)
+
+          console.log(JSON.stringify(chart))
 
           //return data
           io.sockets.emit('message', message);

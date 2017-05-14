@@ -14,11 +14,12 @@ $(document).ready(function(){
           $('div#'+message.uuid).append(p)
           var json = message.chart
 
+          console.log(json)
           // var ctx = $('#'+message.uuid)
           var ctx = $('#myChart')
           var myChart = new Chart(ctx, json)
 
-          if (message.votingComplete){ json = ''}
+
           // console.log(buildChart(labels,points))
 
       });

@@ -34,7 +34,6 @@ function generateColors(colorsNeeded){
       // 'rgba(255, 159, 64, 1)'
     ]
 
-    console.log('colorsNeeded= ' + colorsNeeded)
 
     //if there are enough colors just return set
     // if (colorsNeeded <= backgroundColorSet.length){
@@ -45,9 +44,12 @@ function generateColors(colorsNeeded){
     var borderColors = []
     var i = 1
 
+    console.log('backgroundColors.length= ' + backgroundColors.length) //0
+    console.log('colorsNeeded= ' + colorsNeeded) //3
+
     while (backgroundColors.length < colorsNeeded) {
 
-          if(i > backgroundColorSet.length){
+          if(i >= backgroundColorSet.length){
             i = 1;
           }
 

@@ -46,12 +46,16 @@ var slackController = function(app,io){
           //count num votes
           numVotes++
 
+          chart = utils.buildChart(req.body.user_name,req.body.text)
+
+
           var message = {
             'points': req.body.text,
             'userName': req.body.user_name,
             'channel': req.body.channel_name,
             'uuid':uuid,
-            'votingComplete':votingComplete
+            'votingComplete':votingComplete,
+            'chart':chart
           }
 
           console.log(message)

@@ -4,6 +4,8 @@ $(document).ready(function(){
       var socket = io();
 
 
+
+
       //render voting messages onto screen
       socket.on("message", function(message) {
           //append voting msg to page
@@ -24,10 +26,13 @@ $(document).ready(function(){
       });
 
 
+
   $('form#addTask').on('submit', function(){
 
       var taskName = $('#task_name').val()
       var numPeople = $('#num_people').val()
+      var uuid = generateUUID()
+
 
       $.ajax({
         type: 'POST',
@@ -51,3 +56,7 @@ $(document).ready(function(){
       return false;
 
   });
+
+
+
+});

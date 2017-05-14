@@ -32,7 +32,8 @@ var slackController = function(app,io){
     var votingComplete = false
     var uuid = ''
     var chart = ''
-
+    var userArr = new Array()
+    var pointArr = new Array()
 
     app.get('/',function(req,res){
         res.render('index')
@@ -47,7 +48,10 @@ var slackController = function(app,io){
           //count num votes
           numVotes++
 
-          chart = utils.buildChart(req.body.user_name,req.body.text)
+          userArr.push(req.body.user_name)
+          pointArr.push(req.body.text)
+
+          chart = utils.buildChart(userArr,pointArr)
 
 
           var message = {

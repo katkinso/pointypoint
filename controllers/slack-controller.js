@@ -84,8 +84,8 @@ var slackController = function(app,io){
           res.send(msg)
           if (votingComplete){
             message = ''
-            // userArr = []
-            // pointArr = []
+            userArr = []
+            pointArr = []
           }
 
 

@@ -54,8 +54,9 @@ var slackController = function(app,io){
           //tell if voting is done
           if (numVotes == numPeople){
               votingComplete = true
-              msg += ' Voting Closed!'
               numVotes = 0
+              msg += ' Voting Closed!'
+
           }
 
           //buildChart
@@ -81,6 +82,8 @@ var slackController = function(app,io){
           //return data
           io.sockets.emit('message', message);
           res.send(msg)
+
+          // reset everything
           if (votingComplete){
             message = ''
             userArr = []

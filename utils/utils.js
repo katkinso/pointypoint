@@ -58,6 +58,8 @@ var buildChart = function(labels,points){
         }
     }
 
+    console.log('json: ' + json)
+
     return json
 }//function
 

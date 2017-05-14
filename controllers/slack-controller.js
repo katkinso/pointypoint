@@ -31,6 +31,7 @@ var slackController = function(app,io){
     var numVotes = 0
     var votingComplete = false
     var uuid = ''
+    var chart = ''
 
 
     app.get('/',function(req,res){

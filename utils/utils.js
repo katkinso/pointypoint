@@ -36,7 +36,7 @@ function generateColors(colorsNeeded){
 
     console.log('colorsNeeded= ' + colorsNeeded)
 
-    if (colorsNeeded <= backgroundColors.length){
+    if (colorsNeeded <= backgroundColorSet.length){
       return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
     }
 

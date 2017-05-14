@@ -47,7 +47,7 @@ function generateColors(colorsNeeded){
 
     while (backgroundColors.length < colorsNeeded) {
 
-          if(backgroundColors.length == i){
+          if ((backgroundColors.length == i) && (i)){
             i=0
             console.log('hit')
           }

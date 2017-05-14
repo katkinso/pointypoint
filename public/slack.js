@@ -12,23 +12,16 @@ $(document).ready(function(){
           var p = $('<p />')
           p.append(message.userName + ' | ' + message.points)
           $('div#'+message.uuid).append(p)
+          var json = message.chart
 
           // var ctx = $('#'+message.uuid)
           var ctx = $('#myChart')
-          var myChart = new Chart(ctx, message.chart)
+          var myChart = new Chart(ctx, json)
+
+          if (message.votingComplete){ json = ''}
           // console.log(buildChart(labels,points))
 
       });
-
-      //temp
-      // var uuid = 123
-      // var ctx = $('#'+uuid);
-      // var labels = 'kate'
-      // var points = 5
-      //
-      //
-
-
 
 
 
@@ -55,11 +48,11 @@ $(document).ready(function(){
           $('#main').append(div)
 
           //add chart
-          var canvas = $("<canvas />")
-          canvas.attr('id',uuid)
-          canvas.attr('width',300)
-          canvas.attr('height',300)
-          $('#main').append(canvas)
+          // var canvas = $("<canvas />")
+          // canvas.attr('id',uuid)
+          // canvas.attr('width',300)
+          // canvas.attr('height',300)
+          // $('#main').append(canvas)
 
 
           // location.reload();

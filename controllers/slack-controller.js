@@ -48,7 +48,7 @@ var slackController = function(app,io){
 
           //count num votes
           numVotes++
-          msg = `Thanks ${message.userName} voting recorded.`
+          msg = `Thanks ${req.body.user_name} voting recorded.`
 
           //tell if voting is done
           if (numVotes == numPeople){

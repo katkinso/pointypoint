@@ -2,7 +2,7 @@ $(document).ready(function(){
 
       //instatntiate socket.io
       var socket = io();
-      $( "#myChart" ).remove()
+
 
 
 
@@ -14,7 +14,7 @@ $(document).ready(function(){
           $('div#'+message.uuid).append(p)
           var json = message.chart
 
-
+          $( "#myChart" ).remove()
           var canvas = $("<canvas />")
           canvas.attr('id','myChart')
           canvas.attr('width',300)

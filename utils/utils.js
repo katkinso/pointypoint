@@ -14,10 +14,12 @@ var generateUUID = function () {
 };
 
 
+
+
 var buildChart = function(labels,points){
 
     var json = {
-        type: 'bar',
+        type: 'horizontalBar',
         canvas: {
           width:300,
           height:300

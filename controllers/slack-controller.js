@@ -68,7 +68,7 @@ var slackController = function(app,io){
           //build message for front end
           var message = {
             'points': req.body.text,
-            'userName': req.body.user_name,
+            'userName': req.body.user_name  + numVotes.toString(),
             'channel': req.body.channel_name,
             'uuid':uuid,
             'votingComplete':votingComplete,

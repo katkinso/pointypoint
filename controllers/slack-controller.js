@@ -60,7 +60,7 @@ var slackController = function(app,io){
           }
 
           //buildChart
-          userArr.push(req.body.user_name)
+          userArr.push(req.body.user_name + numVotes.toString())
           pointArr.push(req.body.text)
           chart = utils.buildChart(userArr,pointArr)
 

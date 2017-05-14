@@ -42,7 +42,7 @@ function generateColors(colorsNeeded){
 
     var backgroundColors = []
     var borderColors = []
-    var i = 1
+    var i = 0
 
     console.log('backgroundColors.length= ' + backgroundColors.length) //0
     console.log('colorsNeeded= ' + colorsNeeded) //3
@@ -52,6 +52,7 @@ function generateColors(colorsNeeded){
           // if(i >= backgroundColorSet.length){
           //   i = 1;
           // }
+          i++
 
           backgroundColors.push(backgroundColorSet.slice(0, i))
           borderColors.push(borderColorSet.slice(0, i))
@@ -59,7 +60,7 @@ function generateColors(colorsNeeded){
           console.log('XXXXXXXXXXX i= ' + i)
           console.log('backgroundColors= ' + backgroundColors)
 
-          i++
+
     }
 
 

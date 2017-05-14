@@ -45,15 +45,24 @@ var slackController = function(app,io){
         if (req.body.token == slack_token && req.body.token){
 
           var msg = ''
+
           //count num votes
           numVotes++
+          msg = `Thanks ${message.userName} voting recorded.`
 
+          //tell if voting is done
+          if (numVotes == numPeople){
+              votingComplete = true
+              msg += ' Voting Closed!'
+          }
+
+          //buildChart
           userArr.push(req.body.user_name)
           pointArr.push(req.body.text)
-
           chart = utils.buildChart(userArr,pointArr)
 
 
+          //build message for front end
           var message = {
             'points': req.body.text,
             'userName': req.body.user_name,
@@ -63,23 +72,9 @@ var slackController = function(app,io){
             'chart':chart
           }
 
-          console.log(message)
-
-          msg = `Thanks ${message.userName} voting recorded.`
-
-          //tell if voting is done
-          if (numVotes == numPeople){
-              votingComplete = true
-              msg += ' Voting Closed!'
-          }
-
-          console.log(msg)
-
-
-
+          //return data
           io.sockets.emit('message', message);
           res.send(msg)
-
 
 
         }else{

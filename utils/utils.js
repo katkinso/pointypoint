@@ -54,8 +54,8 @@ function generateColors(colorsNeeded){
           // }
           i++
 
-          backgroundColors.push(backgroundColorSet.slice(0, i))
-          borderColors.push(borderColorSet.slice(0, i))
+          backgroundColors = backgroundColorSet.slice(0, i)
+          borderColors = backgroundColorSet.slice(0, i)
 
           console.log('XXXXXXXXXXX i= ' + i)
           console.log('backgroundColors= ' + backgroundColors)

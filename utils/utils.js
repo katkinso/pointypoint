@@ -33,7 +33,7 @@ function generateColors(length){
       'rgba(255, 159, 64, 1)'
     ]
 
-    return {'backgroundColors':JSON.backgroundColors,'borderColors':borderColors}
+    return {'backgroundColors':backgroundColors,'borderColors':borderColors}
 }
 
 

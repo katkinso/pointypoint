@@ -37,9 +37,9 @@ function generateColors(colorsNeeded){
     console.log('colorsNeeded= ' + colorsNeeded)
 
     //if there are enough colors just return set
-    if (colorsNeeded <= backgroundColorSet.length){
-      return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
-    }
+    // if (colorsNeeded <= backgroundColorSet.length){
+    //   return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
+    // }
 
     var backgroundColors = []
     var borderColors = []
@@ -49,7 +49,7 @@ function generateColors(colorsNeeded){
 
           if(backgroundColors.length == i){
             i=0
-
+            console.log('hit')
           }
 
           backgroundColors.push(backgroundColorSet.slice(0, i))

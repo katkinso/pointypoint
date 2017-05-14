@@ -21,7 +21,7 @@ $(document).ready(function(){
           canvas.attr('height',300)
           $('#main').append(canvas)
 
-          console.log(json)
+          console.log(JSON.stringify(json))
           // var ctx = $('#'+message.uuid)
           var ctx = $('#myChart')
           var myChart = new Chart(ctx, json)

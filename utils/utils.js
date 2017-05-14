@@ -14,26 +14,61 @@ var generateUUID = function () {
 };
 
 
-function generateColors(length){
+function generateColors(colorsNeeded){
 
-    var backgroundColors = [
+    var backgroundColorSet = [
     'rgba(255, 99, 132, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
-    'rgba(255, 159, 64, 0.2)']
+    'rgba(54, 162, 235, 0.2)'
+    // 'rgba(255, 206, 86, 0.2)',
+    // 'rgba(75, 192, 192, 0.2)',
+    // 'rgba(153, 102, 255, 0.2)',
+    // 'rgba(255, 159, 64, 0.2)'
+   ]
 
-    var borderColors = [
+    var borderColorSet = [
       'rgba(255,99,132,1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(153, 102, 255, 1)',
-      'rgba(255, 159, 64, 1)'
+      'rgba(54, 162, 235, 1)'
+      // 'rgba(255, 206, 86, 1)',
+      // 'rgba(75, 192, 192, 1)',
+      // 'rgba(153, 102, 255, 1)',
+      // 'rgba(255, 159, 64, 1)'
     ]
 
-    return {'backgroundColors':backgroundColors,'borderColors':borderColors}
+    console.log('colorsNeeded= ' + colorsNeeded)
+
+    if (colorsNeeded <= backgroundColors.length){
+      return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
+    }
+
+    // if (totalColors > backgroundColors.length){
+    //
+    //     var colorsNeeded = totalColors - backgroundColors.length
+    //
+    //     if (colorsNeeded < backgroundColors.length){
+    //         backgroundColors.push(backgroundColors.slice(0, colorsNeeded - 1))
+    //         borderColors.push(borderColors.slice(0, colorsNeeded - 1))
+    //     }else{
+    //         var backgroundColors2 = []
+    //         var i = 0
+    //
+    //         backgroundColors2.push(backgroundColors)
+    //
+    //         while (backgroundColors2.length < totalColors) {
+    //
+    //               if(backgroundColors.length == i){
+    //                 i=0
+    //               }
+    //               backgroundColors2.push(backgroundColors[i])
+    //               i++
+    //         }
+    //
+    //     }
+    //
+    // }
+    //
+    //
+    //
+    // return {'backgroundColors':backgroundColors,'borderColors':borderColors}
 }
 
 
@@ -50,12 +85,7 @@ var buildChart = function(labels,points){
             datasets: [{
                 label: '# of Votes',
                 data: points,
-                backgroundColor: ['rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'],
+                backgroundColor: colors.backgroundColors,
                 borderColor: colors.borderColors,
                 borderWidth: 1
             }]

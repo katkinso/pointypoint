@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 
           var canvas = $("<canvas />")
-          canvas.attr('id',myChart)
+          canvas.attr('id','myChart')
           canvas.attr('width',300)
           canvas.attr('height',300)
           $('#main').append(canvas)

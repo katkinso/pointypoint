@@ -60,7 +60,7 @@ var buildChart = function(labels,points){
 
     // console.log('json: ' + JSON.stringify(json))
 
-    return JSON.stringify(json)
+    return json
 }//function
 
 

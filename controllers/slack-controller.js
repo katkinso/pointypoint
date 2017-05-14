@@ -44,10 +44,13 @@ var slackController = function(app,io){
 
         if (req.body.token == slack_token && req.body.token){
 
-          var msg = ''
+
 
           //count num votes
           numVotes++
+
+          //set message for slack response
+          var msg = ''
           msg = `Thanks ${req.body.user_name} voting recorded.`
 
           //tell if voting is done

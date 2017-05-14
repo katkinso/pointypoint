@@ -78,7 +78,11 @@ var slackController = function(app,io){
           //return data
           io.sockets.emit('message', message);
           res.send(msg)
-          if (votingComplete){ message = '' }
+          if (votingComplete){
+            message = ''
+            userArr = []
+            pointArr = []
+          }
 
 
         }else{

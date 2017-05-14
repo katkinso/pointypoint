@@ -17,7 +17,7 @@ var generateUUID = function () {
 var buildChart = function(labels,points){
 
     var json = {
-        type: 'horizontalBar',
+        type: 'bar',
         canvas: {
           width:300,
           height:300

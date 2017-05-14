@@ -55,12 +55,45 @@ $(document).ready(function(){
           div.append(h3)
           $('#main').append(div)
 
-          //add chart
+          //Temp
           // var canvas = $("<canvas />")
-          // canvas.attr('id',uuid)
+          // canvas.attr('id','myChart')
           // canvas.attr('width',300)
           // canvas.attr('height',300)
           // $('#main').append(canvas)
+          //
+          // var ctx = $('#myChart')
+          // var myChart = new Chart(ctx,
+          //   {
+          //     type: 'bar',
+          //     data: {
+          //       labels: ["katyratkinson1", "katyratkinson2"],
+          //       datasets: [{
+          //           label: '# of Votes',
+          //           data: [12, 19],
+          //           backgroundColor: [
+          //               'rgba(255, 99, 132, 0.2)',
+          //               'rgba(54, 162, 235, 0.2)'
+          //           ],
+          //           borderColor: [
+          //               'rgba(255,99,132,1)',
+          //               'rgba(54, 162, 235, 1)'
+          //           ],
+          //           borderWidth: 1
+          //       }]
+          //     },
+          //     options: {
+          //       scales: {
+          //           yAxes: [{
+          //               ticks: {
+          //                   beginAtZero:true
+          //               }
+          //           }]
+          //       }
+          //     }
+          //     }
+          //
+          // )
 
 
           // location.reload();

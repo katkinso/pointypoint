@@ -49,11 +49,11 @@ function generateColors(colorsNeeded){
 
     while (backgroundColors.length < colorsNeeded) {
 
-          if (backgroundColorSet.length < colorsNeeded){
+          // if (backgroundColorSet.length < colorsNeeded){
               i++
               backgroundColors = backgroundColorSet.slice(0, i)
               borderColors = backgroundColorSet.slice(0, i)
-          }
+          // }
 
           console.log('XXXXXXXXXXX i= ' + i)
           console.log('backgroundColors= ' + backgroundColors)

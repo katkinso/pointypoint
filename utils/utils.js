@@ -40,33 +40,33 @@ function generateColors(colorsNeeded){
     //   return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
     // }
 
-    var backgroundColors = []
-    var borderColors = []
-    var i = 0
+    // var backgroundColors = []
+    // var borderColors = []
+    // var i = 0
+    //
+    // console.log('backgroundColors.length= ' + backgroundColors.length) //0
+    // console.log('colorsNeeded= ' + colorsNeeded) //3
+    //
+    // while (backgroundColors.length < colorsNeeded) {
+    //
+    //
+    //       i++
+    //       backgroundColors = backgroundColorSet.slice(0, i)
+    //       borderColors = backgroundColorSet.slice(0, i)
+    //
+    //       // if (backgroundColors.length >= i){
+    //       //   i=1
+    //       // }
+    //
+    //       console.log('XXXXXXXXXXX i= ' + i)
+    //       console.log('backgroundColors= ' + backgroundColors)
+    //
+    //
+    // }
+    //
 
-    console.log('backgroundColors.length= ' + backgroundColors.length) //0
-    console.log('colorsNeeded= ' + colorsNeeded) //3
 
-    while (backgroundColors.length < colorsNeeded) {
-
-
-          i++
-          backgroundColors = backgroundColorSet.slice(0, i)
-          borderColors = backgroundColorSet.slice(0, i)
-
-          // if (backgroundColors.length >= i){
-          //   i=1
-          // }
-
-          console.log('XXXXXXXXXXX i= ' + i)
-          console.log('backgroundColors= ' + backgroundColors)
-
-
-    }
-
-
-
-    return {'backgroundColors':backgroundColors,'borderColors':borderColors}
+    return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
 
 }
 

@@ -38,35 +38,32 @@ function generateColors(colorsNeeded){
     borderColors = []
     ii = 0
 
+    //iterate though available colors and add colors if needed
     for (let i = 0; i < colorsNeeded; i++){
 
-          if (ii == availBackgroundColors.length){
-            ii=0
-          }
+          if (ii == availBackgroundColors.length){ ii=0 }
 
           bgColors.push(availBackgroundColors[ii])
           borderColors.push(availBorderColors[ii])
           ii++
     }
 
-
     return {'backgroundColors':bgColors,'borderColors':borderColors}
-
 }
 
 
 var buildChart = function(labels,points){
 
+    //generate colors for graph
     var colors = generateColors(labels.length)
 
-    console.log('backgroundColors= ' + colors.backgroundColors)
-
+    //build chart
     var json = {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [{
-                label: '# of Votes',
+                label: '# of Points',
                 data: points,
                 backgroundColor: colors.backgroundColors,
                 borderColor: colors.borderColors,
@@ -84,8 +81,6 @@ var buildChart = function(labels,points){
             }
         }
     }
-
-    // console.log('json: ' + JSON.stringify(json))
 
     return json
 }//function

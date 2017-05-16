@@ -2,58 +2,6 @@ $(document).ready(function(){
 
       //instatntiate socket.io
       var socket = io();
-      // 
-      //
-      //   var availBackgroundColors = [
-      //   'rgba(255, 99, 132, 0.2)',
-      //   'rgba(54, 162, 235, 0.2)',
-      //   'rgba(255, 206, 86, 0.2)',
-      //   'rgba(75, 192, 192, 0.2)',
-      //   'rgba(153, 102, 255, 0.2)',
-      //   'rgba(255, 159, 64, 0.2)'
-      //  ]
-      //
-      //   var availBorderColors = [
-      //     'rgba(255,99,132,1)',
-      //     'rgba(54, 162, 235, 1)',
-      //     'rgba(255, 206, 86, 1)',
-      //     'rgba(75, 192, 192, 1)',
-      //     'rgba(153, 102, 255, 1)',
-      //     'rgba(255, 159, 64, 1)'
-      //   ]
-      //
-      // //10 people
-      // //6 AvailColors
-      // //4 colors
-      // // 0-6
-      // // 0-4
-      //
-      // var numPeople = 22
-      // var bgColors = []
-      // ii=0
-      //
-      // // if (availBackgroundColors.length < numPeople){
-      //
-      //     var colorsNeeded = numPeople
-      //
-      //
-      //       for (let i = 0; i < colorsNeeded; i++){
-      //
-      //             if (ii == availBackgroundColors.length){
-      //               ii=0
-      //             }
-      //
-      //             bgColors.push(availBackgroundColors[ii])
-      //             ii++
-      //       }
-      //
-      // // }
-      //
-      // console.log(bgColors)
-      //
-
-
-
 
 
       //render voting messages onto screen
@@ -65,13 +13,13 @@ $(document).ready(function(){
 
           $( "#myChart" ).remove()
           var canvas = $("<canvas />")
-          canvas.attr('id','myChart')
-          canvas.attr('width',500)
+          canvas.attr('id','pointingChart')
+          canvas.attr('width',600)
           canvas.attr('height',500)
           $('#main').append(canvas)
 
-          var ctx = $('#myChart')
-          var myChart = new Chart(ctx, message.chart)
+          var ctx = $('#pointingChart')
+          var pointingChart = new Chart(ctx, message.chart)
 
       });
 
@@ -98,62 +46,6 @@ $(document).ready(function(){
           h3.append(taskName)
           div.append(h3)
           $('#main').append(div)
-
-        //   var ctx = $('#myChart')
-        //   var myChart = new Chart(ctx,
-        //
-        //   {
-        //      "type":"bar",
-        //      "data":{
-        //         "labels":[
-        //            "katyratkinson1",
-        //            "katyratkinson0"
-        //         ],
-        //         "datasets":[
-        //            {
-        //               "label":"# of Votes",
-        //               "data":[
-        //                  "3",
-        //                  "4"
-        //               ],
-        //               "backgroundColor":[
-        //
-        //                     "rgba(255, 99, 132, 0.2)",
-        //                     "rgba(54, 162, 235, 0.2)",
-        //                     "rgba(255, 206, 86, 0.2)",
-        //                     "rgba(75, 192, 192, 0.2)",
-        //                     "rgba(153, 102, 255, 0.2)",
-        //                     "rgba(255, 159, 64, 0.2)"
-        //
-        //               ],
-        //               "borderColor":[
-        //
-        //                     "rgba(255,99,132,1)",
-        //                     "rgba(54, 162, 235, 1)",
-        //                     "rgba(255, 206, 86, 1)",
-        //                     "rgba(75, 192, 192, 1)",
-        //                     "rgba(153, 102, 255, 1)",
-        //                     "rgba(255, 159, 64, 1)"
-        //
-        //               ],
-        //               "borderWidth":1
-        //            }
-        //         ]
-        //      },
-        //      "options":{
-        //         "responsive":false,
-        //         "scales":{
-        //            "yAxes":[
-        //               {
-        //                  "ticks":{
-        //                     "beginAtZero":true
-        //                  }
-        //               }
-        //            ]
-        //         }
-        //      }
-        //   }
-        // )//chart
 
           // location.reload();
         }

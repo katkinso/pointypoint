@@ -36,6 +36,7 @@ function generateColors(colorsNeeded){
 
     bgColors = []
     borderColors = []
+    ii = 0
 
     for (let i = 0; i < colorsNeeded; i++){
 

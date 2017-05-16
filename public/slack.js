@@ -2,16 +2,57 @@ $(document).ready(function(){
 
       //instatntiate socket.io
       var socket = io();
+      // 
+      //
+      //   var availBackgroundColors = [
+      //   'rgba(255, 99, 132, 0.2)',
+      //   'rgba(54, 162, 235, 0.2)',
+      //   'rgba(255, 206, 86, 0.2)',
+      //   'rgba(75, 192, 192, 0.2)',
+      //   'rgba(153, 102, 255, 0.2)',
+      //   'rgba(255, 159, 64, 0.2)'
+      //  ]
+      //
+      //   var availBorderColors = [
+      //     'rgba(255,99,132,1)',
+      //     'rgba(54, 162, 235, 1)',
+      //     'rgba(255, 206, 86, 1)',
+      //     'rgba(75, 192, 192, 1)',
+      //     'rgba(153, 102, 255, 1)',
+      //     'rgba(255, 159, 64, 1)'
+      //   ]
+      //
+      // //10 people
+      // //6 AvailColors
+      // //4 colors
+      // // 0-6
+      // // 0-4
+      //
+      // var numPeople = 22
+      // var bgColors = []
+      // ii=0
+      //
+      // // if (availBackgroundColors.length < numPeople){
+      //
+      //     var colorsNeeded = numPeople
+      //
+      //
+      //       for (let i = 0; i < colorsNeeded; i++){
+      //
+      //             if (ii == availBackgroundColors.length){
+      //               ii=0
+      //             }
+      //
+      //             bgColors.push(availBackgroundColors[ii])
+      //             ii++
+      //       }
+      //
+      // // }
+      //
+      // console.log(bgColors)
+      //
 
-    //   var backgroundColorSet = [
-    //   'rgba(255, 99, 132, 0.2)',
-    //   'rgba(54, 162, 235, 0.2)'
-    //  ]
-     //
-    //  var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-    //  var citrus = backgroundColorSet.slice(0, 1)
-     //
-    //  console.log(citrus)
+
 
 
 

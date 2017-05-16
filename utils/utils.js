@@ -16,7 +16,7 @@ var generateUUID = function () {
 
 function generateColors(colorsNeeded){
 
-    var backgroundColorSet = [
+    var availBackgroundColors = [
     'rgba(255, 99, 132, 0.2)',
     'rgba(54, 162, 235, 0.2)',
     'rgba(255, 206, 86, 0.2)',
@@ -25,7 +25,7 @@ function generateColors(colorsNeeded){
     'rgba(255, 159, 64, 0.2)'
    ]
 
-    var borderColorSet = [
+    var availBorderColors = [
       'rgba(255,99,132,1)',
       'rgba(54, 162, 235, 1)',
       'rgba(255, 206, 86, 1)',
@@ -34,39 +34,22 @@ function generateColors(colorsNeeded){
       'rgba(255, 159, 64, 1)'
     ]
 
+    bgColors = []
+    borderColors = []
 
-    //if there are enough colors just return set
-    // if (colorsNeeded <= backgroundColorSet.length){
-    //   return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
-    // }
+    for (let i = 0; i < colorsNeeded; i++){
 
-    // var backgroundColors = []
-    // var borderColors = []
-    // var i = 0
-    //
-    // console.log('backgroundColors.length= ' + backgroundColors.length) //0
-    // console.log('colorsNeeded= ' + colorsNeeded) //3
-    //
-    // while (backgroundColors.length < colorsNeeded) {
-    //
-    //
-    //       i++
-    //       backgroundColors = backgroundColorSet.slice(0, i)
-    //       borderColors = backgroundColorSet.slice(0, i)
-    //
-    //       // if (backgroundColors.length >= i){
-    //       //   i=1
-    //       // }
-    //
-    //       console.log('XXXXXXXXXXX i= ' + i)
-    //       console.log('backgroundColors= ' + backgroundColors)
-    //
-    //
-    // }
-    //
+          if (ii == availBackgroundColors.length){
+            ii=0
+          }
+
+          bgColors.push(availBackgroundColors[ii])
+          borderColors.push(availBorderColors[ii])
+          ii++
+    }
 
 
-    return {'backgroundColors':backgroundColorSet,'borderColors':borderColorSet}
+    return {'backgroundColors':bgColors,'borderColors':borderColors}
 
 }
 
@@ -75,7 +58,7 @@ var buildChart = function(labels,points){
 
     var colors = generateColors(labels.length)
 
-    console.log(colors.borderColors)
+    console.log('backgroundColors= ' + colors.backgroundColors)
 
     var json = {
         type: 'bar',

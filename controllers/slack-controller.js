@@ -1,7 +1,3 @@
-// var request = require('request')
-// var Promise = require('bluebird')
-// var request = Promise.promisifyAll(require("request"), {multiArgs: true})
-
 var bodyParser = require('body-parser')
 var Client = require('node-rest-client').Client
 var client = new Client()
@@ -22,13 +18,8 @@ function fsExistsSync(myDir) {
   }
 }
 
-
 var slack_token = process.env['SLACK_VERIFICATION_TOKEN']
 var slack_post_token = process.env['SLACK_POST_TOKEN']
-
-
-console.log('slack_token= ' + slack_token)
-console.log('slack_post_token= ' + slack_post_token)
 
 
 var slack_args = {
@@ -78,7 +69,7 @@ var slackController = function(app,io){
               votingComplete = true
               numVotes = 0
               msg += ' Voting Closed!'
-
+              return 
           }
 
           //buildChart
@@ -96,10 +87,6 @@ var slackController = function(app,io){
             'votingComplete':votingComplete,
             'chart':chart
           }
-
-
-
-          console.log(JSON.stringify(chart))
 
           //return data
           io.sockets.emit('message', message);

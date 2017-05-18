@@ -4,4 +4,4 @@
 var os = require("os");
 var hostname = os.hostname();
 
-console.log(hostname)
+console.log('hostname= ' + hostname)

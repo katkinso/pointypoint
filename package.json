@@ -18,6 +18,7 @@
     "chart.js": "^2.5.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "gulp": "^3.9.1",
     "mongoose": "^4.9.4",
     "node-rest-client": "^3.1.0",
     "nodemon": "^1.11.0",

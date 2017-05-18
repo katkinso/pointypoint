@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 var Client = require('node-rest-client').Client
 var client = new Client()
 var utils = require('../utils/utils')
+var utils = require('../config/local')
 
 
 var slack_token = process.env['SLACK_VERIFICATION_TOKEN']
@@ -42,7 +43,9 @@ var slackController = function(app,io){
 
     app.post('/',urlencodedParser,function(req,res){
 
+
         if (req.body.token == slack_token && req.body.token){
+
 
           //count num votes
           numVotes++
@@ -100,7 +103,7 @@ var slackController = function(app,io){
             numPeople = req.body.num_people
             uuid = req.body.uuid
 
-            console.log(uuid)
+            console.log('slack_token' + slack_token)
 
             if (!numPeople){ res.render('index') }
 

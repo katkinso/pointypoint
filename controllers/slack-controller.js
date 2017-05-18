@@ -6,22 +6,31 @@ var bodyParser = require('body-parser')
 var Client = require('node-rest-client').Client
 var client = new Client()
 var utils = require('../utils/utils')
-var os = require("os");
-var hostname = os.hostname();
+var fs = require('fs')
 
+if (fsExistsSync('config/local.js')) {
+  var token = require('../config/local')
+  token.setEnv()
+}
 
-if(hostname != '09980a24-4253-461b-9d6c-32d0bfbd677a'){
-  var local = require('../config/local')
+function fsExistsSync(myDir) {
+  try {
+    fs.accessSync(myDir);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
 
 
 var slack_token = process.env['SLACK_VERIFICATION_TOKEN']
 var slack_post_token = process.env['SLACK_POST_TOKEN']
 
-console.log(slack_token)
-console.log(slack_post_token)
 
-//
+console.log('slack_token= ' + slack_token)
+console.log('slack_post_token= ' + slack_post_token)
+
+
 var slack_args = {
   'path': {'team_id': 'T583UKKFS','channel_id': 'B58DWJSKT','slack_post_token': slack_post_token},
   'headers': { "Content-Type": "application/json" },

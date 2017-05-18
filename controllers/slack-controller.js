@@ -69,7 +69,6 @@ var slackController = function(app,io){
               votingComplete = true
               numVotes = 0
               msg += ' Voting Closed!'
-              return 
           }
 
           //buildChart
@@ -89,16 +88,21 @@ var slackController = function(app,io){
           }
 
           //return data
-          io.sockets.emit('message', message);
-          res.send(msg)
-
           // reset everything
           if (votingComplete){
             message = ''
             userArr = []
             pointArr = []
             votingComplete = false
+            res.send('I said voting complete! stop voting dumbass!')
+          }else{
+            io.sockets.emit('message', message);
+            res.send(msg)
           }
+
+
+
+
 
 
         }else{

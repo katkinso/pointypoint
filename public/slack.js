@@ -11,7 +11,7 @@ $(document).ready(function(){
       p.append(message.userName + ' | ' + message.points)
       $('div#chart').append(p)
 
-
+      $( "#pointingChart").remove()
       var canvas = $("<canvas />")
       canvas.attr('id','pointingChart')
       canvas.attr('width',600)

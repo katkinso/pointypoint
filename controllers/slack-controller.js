@@ -96,7 +96,7 @@ var slackController = function(app,io){
         msg = `Thanks ${req.body.user_name} voting recorded.`
 
         //tell if voting is done
-        if (numVotes > numPeople){
+        if (numVotes == numPeople){
             votingComplete = true
             msg += ' Voting Closed!'
         }

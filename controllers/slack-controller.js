@@ -104,34 +104,38 @@ var slackController = function(app,io){
 
         if (numVotes > numPeople){
             msg = 'I said voting complete! stop voting dumbass!'
+        }else{
+            //buildChart
+            userArr.push(req.body.user_name + numVotes.toString())
+            pointArr.push(req.body.text)
+            chart = utils.buildChart(userArr,pointArr)
+
+            //build message for front end
+            var message = {
+              'points': req.body.text,
+              'userName': req.body.user_name  + numVotes.toString(),
+              'channel': req.body.channel_name,
+              'uuid':uuid,
+              'votingComplete':votingComplete,
+              'chart':chart
+            }
+
+            io.sockets.emit('message', message)
         }
 
-        //buildChart
-        userArr.push(req.body.user_name + numVotes.toString())
-        pointArr.push(req.body.text)
-        chart = utils.buildChart(userArr,pointArr)
-
-        //build message for front end
-        var message = {
-          'points': req.body.text,
-          'userName': req.body.user_name  + numVotes.toString(),
-          'channel': req.body.channel_name,
-          'uuid':uuid,
-          'votingComplete':votingComplete,
-          'chart':chart
-        }
+        res.send(msg)
 
         //return data & reset everything
-        if (votingComplete){
-          message = ''
-          userArr = []
-          pointArr = []
-          numVotes = 0
-          votingComplete = false
-        }else{
-          io.sockets.emit('message', message);
-          res.send(msg)
-        }
+        // if (votingComplete){
+        //   message = ''
+        //   userArr = []
+        //   pointArr = []
+        //   numVotes = 0
+        //   votingComplete = false
+        // }else{
+          // io.sockets.emit('message', message);
+          // res.send(msg)
+        // }
 
     })
 

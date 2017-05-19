@@ -30,6 +30,7 @@ var slack_args = {
   }
 }
 
+var fibonacci = [1, 2, 3, 5, 8, 13, 21]
 
 // https://hooks.slack.com/services/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
 
@@ -50,84 +51,78 @@ var slackController = function(app,io){
         res.render('index')
     })
 
+    //Add task to slack
+    app.post('/addtask',urlencodedParser,function(req,res){
 
+          //set the message you want to post to slack
+          slack_args.data.text = req.body.task_name
+          numPeople = req.body.num_people
+          uuid = req.body.uuid
+
+          if (!numPeople){ res.render('index') }
+
+          //post to slack
+          client.post("https://hooks.slack.com/services/${team_id}/${channel_id}/${slack_post_token}", slack_args, function (data, response) {
+          });
+
+          res.render('index',{task_to_point:req.body.task_name,uuid:uuid})
+
+    })
+
+    //recieve post from slack
     app.post('/',urlencodedParser,function(req,res){
 
 
-        if (req.body.token == slack_token && req.body.token){
-
-
-          //count num votes
-          numVotes++
-
-          //set message for slack response
-          var msg = ''
-          msg = `Thanks ${req.body.user_name} voting recorded.`
-
-          //tell if voting is done
-          if (numVotes > numPeople){
-              votingComplete = true
-              numVotes = 0
-              msg += ' Voting Closed!'
-          }
-
-          //buildChart
-          userArr.push(req.body.user_name + numVotes.toString())
-          pointArr.push(req.body.text)
-          chart = utils.buildChart(userArr,pointArr)
-
-
-          //build message for front end
-          var message = {
-            'points': req.body.text,
-            'userName': req.body.user_name  + numVotes.toString(),
-            'channel': req.body.channel_name,
-            'uuid':uuid,
-            'votingComplete':votingComplete,
-            'chart':chart
-          }
-
-          //return data
-          // reset everything
-          if (votingComplete){
-            message = ''
-            userArr = []
-            pointArr = []
-            votingComplete = false
-            res.send('I said voting complete! stop voting dumbass!')
-          }else{
-            io.sockets.emit('message', message);
-            res.send(msg)
-          }
-
-
-
-
-
-
-        }else{
-
-
-            //set the message you want to post to slack
-            slack_args.data.text = req.body.task_name
-            numPeople = req.body.num_people
-            uuid = req.body.uuid
-
-            console.log('slack_token' + slack_token)
-
-            if (!numPeople){ res.render('index') }
-
-            client.post("https://hooks.slack.com/services/${team_id}/${channel_id}/${slack_post_token}", slack_args, function (data, response) {
-            // parsed response body as js object
-            // console.log(data);
-            // raw response
-            //console.log(response);
-            });
-
-          // res.redirect('/')
-
-            res.render('index',{task_to_point:req.body.task_name,uuid:uuid})
+        if (req.body.token != slack_token && !req.body.token){
+          res.send('invalid token')
         }
+
+        if (fibonacci.indexOf(req.body.text)){
+          res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
+        }
+
+        console.log('here and I shouldnt be')
+        //count num votes
+        numVotes++
+
+        //set message for slack response
+        var msg = ''
+        msg = `Thanks ${req.body.user_name} voting recorded.`
+
+        //tell if voting is done
+        if (numVotes > numPeople){
+            votingComplete = true
+            msg += ' Voting Closed!'
+        }
+
+        //buildChart
+        userArr.push(req.body.user_name + numVotes.toString())
+        pointArr.push(req.body.text)
+        chart = utils.buildChart(userArr,pointArr)
+
+        //build message for front end
+        var message = {
+          'points': req.body.text,
+          'userName': req.body.user_name  + numVotes.toString(),
+          'channel': req.body.channel_name,
+          'uuid':uuid,
+          'votingComplete':votingComplete,
+          'chart':chart
+        }
+
+        //return data & reset everything
+        if (votingComplete){
+          message = ''
+          userArr = []
+          pointArr = []
+          numVotes = 0
+          votingComplete = false
+          res.send('I said voting complete! stop voting dumbass!')
+        }else{
+          io.sockets.emit('message', message);
+          res.send(msg)
+        }
+
     })
 
 

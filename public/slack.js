@@ -9,9 +9,9 @@ $(document).ready(function(){
       //append voting msg to page
       var p = $('<p />')
       p.append(message.userName + ' | ' + message.points)
-      $('div#'+message.uuid).append(p)
+      $('div#chart').append(p)
 
-      $( "#pointingChart" ).remove()
+
       var canvas = $("<canvas />")
       canvas.attr('id','pointingChart')
       canvas.attr('width',600)
@@ -27,6 +27,7 @@ $(document).ready(function(){
   $('form#addTask').on('submit', function(){
 
       if(checkForm()){
+        clearPage()
         postToSlack()
       }
       return false;
@@ -35,6 +36,10 @@ $(document).ready(function(){
 
 });
 
+function clearPage(){
+  $( "#pointingChart").remove()
+  $( "div#chart").remove()
+}
 //check form
 function checkForm(){
 
@@ -62,12 +67,12 @@ function postToSlack(){
 
   $.ajax({
     type: 'POST',
-    url: '/',
+    url: '/addtask',
     data: {'task_name':taskName,'num_people':numPeople,'uuid':uuid},
     success: function(data){
       var div = $('<div />')
       var h3 = $('<h3 />')
-      div.attr('id',uuid)
+      div.attr('id','chart')
       h3.append(taskName)
       div.append(h3)
       $('#main').append(div)

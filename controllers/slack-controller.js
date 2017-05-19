@@ -31,6 +31,8 @@ var slack_args = {
 }
 
 var fibonacci = [1, 2, 3, 5, 8, 13, 21]
+// var x = 4
+// console.log(fibonacci.indexOf(parseInt(x)) === -1)
 
 // https://hooks.slack.com/services/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
 
@@ -75,10 +77,12 @@ var slackController = function(app,io){
 
         if (req.body.token != slack_token && !req.body.token){
           res.send('invalid token')
+          return
         }
 
-        if (fibonacci.indexOf(req.body.text)){
+        if (fibonacci.indexOf(parseInt(req.body.text)) === -1){
           res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
+          return
         }
 
         console.log('here and I shouldnt be')

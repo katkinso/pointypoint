@@ -41,7 +41,7 @@ var fibonacci = [1, 2, 3, 5, 8, 13, 21]
 var slackController = function(app,io){
 
     var urlencodedParser = bodyParser.urlencoded({extended:false})
-    var numPeople
+    var numPeople = 0
     var numVotes = 0
     var votingComplete = false
     var uuid = ''
@@ -58,7 +58,7 @@ var slackController = function(app,io){
 
           //set the message you want to post to slack
           slack_args.data.text = req.body.task_name
-          numPeople = req.body.num_people
+          numPeople = parseInt(req.body.num_people)
           uuid = req.body.uuid
 
           if (!numPeople){ res.render('index') }
@@ -90,13 +90,14 @@ var slackController = function(app,io){
         numVotes++
 
         console.log('Numver of votes-> ' + numVotes)
+        console.log('Numver of People-> ' + numPeople)
 
         //set message for slack response
         var msg = ''
         msg = `Thanks ${req.body.user_name} voting recorded.`
 
         //tell if voting is done
-        if (numVotes == numPeople){
+        if (numVotes === numPeople){
             votingComplete = true
             msg += ' Voting Closed!'
         }

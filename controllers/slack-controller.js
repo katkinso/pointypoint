@@ -85,9 +85,11 @@ var slackController = function(app,io){
           return false
         }
 
-        console.log('here and I shouldnt be ' + req.body.text)
+
         //count num votes
         numVotes++
+
+        console.log('Numver of votes-> ' + numVotes)
 
         //set message for slack response
         var msg = ''

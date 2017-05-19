@@ -77,12 +77,12 @@ var slackController = function(app,io){
 
         if (req.body.token != slack_token && !req.body.token){
           res.send('invalid token')
-          res.end()
+          return false
         }
 
         if (fibonacci.indexOf(parseInt(req.body.text)) === -1){
           res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
-          res.end()
+          return false
         }
 
         console.log('here and I shouldnt be ' + req.body.text)

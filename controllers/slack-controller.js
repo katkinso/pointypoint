@@ -102,6 +102,10 @@ var slackController = function(app,io){
             msg += ' Voting Closed!'
         }
 
+        if (numVotes > numPeople){
+            msg = 'I said voting complete! stop voting dumbass!'
+        }
+
         //buildChart
         userArr.push(req.body.user_name + numVotes.toString())
         pointArr.push(req.body.text)
@@ -124,7 +128,6 @@ var slackController = function(app,io){
           pointArr = []
           numVotes = 0
           votingComplete = false
-          res.send('I said voting complete! stop voting dumbass!')
         }else{
           io.sockets.emit('message', message);
           res.send(msg)

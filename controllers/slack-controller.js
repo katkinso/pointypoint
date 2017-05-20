@@ -55,6 +55,13 @@ var slackController = function(app,io){
 
     //Add task to slack
     app.post('/addtask',urlencodedParser,function(req,res){
+          numPeople = 0
+          numVotes = 0
+          votingComplete = false
+          uuid = ''
+          chart = ''
+          userArr = []
+          pointArr = []
 
           //set the message you want to post to slack
           slack_args.data.text = req.body.task_name

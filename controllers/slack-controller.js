@@ -103,6 +103,7 @@ var slackController = function(app,io){
         //tell if voting is done
         if (fibonacci.indexOf(parseInt(req.body.text)) === -1){
             res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
+            numVotes--
             return false
         }
 

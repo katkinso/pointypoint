@@ -81,19 +81,18 @@ var slackController = function(app,io){
     //recieve post from slack
     app.post('/',urlencodedParser,function(req,res){
 
+        //check if slack token is valid
+        if (req.body.token != slack_token && !req.body.token){
+            res.send('invalid token')
+            return false
+        }
+
         //count num votes
         numVotes++
 
         //set message for slack response
         var msg = ''
         msg = `Thanks ${req.body.user_name} voting recorded.`
-
-
-        //check incomming data
-        if (req.body.token != slack_token && !req.body.token){
-            res.send('invalid token')
-            return false
-        }
 
         //check over count
         if (numVotes > numPeople){

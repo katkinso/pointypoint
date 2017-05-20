@@ -81,6 +81,12 @@ var slackController = function(app,io){
     //recieve post from slack
     app.post('/',urlencodedParser,function(req,res){
 
+        //count num votes
+        numVotes++
+
+        //set message for slack response
+        var msg = ''
+        msg = `Thanks ${req.body.user_name} voting recorded.`
 
 
         //check incomming data
@@ -89,27 +95,22 @@ var slackController = function(app,io){
             return false
         }
 
+        //check over count
+        if (numVotes > numPeople){
+            res.send('I said voting complete! stop voting dumbass!')
+            return false
+        }
+
+        //tell if voting is done
         if (fibonacci.indexOf(parseInt(req.body.text)) === -1){
             res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
             return false
         }
 
-        //count num votes
-        numVotes++
-
-        //set message for slack response
-        var msg = ''
-        msg = `Thanks ${req.body.user_name} voting recorded.`
-
         //tell if voting is done
         if (numVotes === numPeople){
             votingComplete = true
             msg += ' Voting Closed!'
-        }
-
-        if (numVotes > numPeople){
-            res.send('I said voting complete! stop voting dumbass!')
-            return false
         }
 
         //buildChart

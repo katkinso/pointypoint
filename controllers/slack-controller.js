@@ -101,7 +101,7 @@ var slackController = function(app,io){
         }
 
         if (numVotes > numPeople){
-            msg = 'I said voting complete! stop voting dumbass!'
+            res.send('I said voting complete! stop voting dumbass!')
             return false
         }
 

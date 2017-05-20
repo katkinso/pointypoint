@@ -75,22 +75,20 @@ var slackController = function(app,io){
     app.post('/',urlencodedParser,function(req,res){
 
 
+
+        //check incomming data
         if (req.body.token != slack_token && !req.body.token){
-          res.send('invalid token')
-          return false
+            res.send('invalid token')
+            return false
         }
 
         if (fibonacci.indexOf(parseInt(req.body.text)) === -1){
-          res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
-          return false
+            res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
+            return false
         }
-
 
         //count num votes
         numVotes++
-
-        console.log('Numver of votes-> ' + numVotes)
-        console.log('Numver of People-> ' + numPeople)
 
         //set message for slack response
         var msg = ''
@@ -104,38 +102,27 @@ var slackController = function(app,io){
 
         if (numVotes > numPeople){
             msg = 'I said voting complete! stop voting dumbass!'
-        }else{
-            //buildChart
-            userArr.push(req.body.user_name + numVotes.toString())
-            pointArr.push(req.body.text)
-            chart = utils.buildChart(userArr,pointArr)
-
-            //build message for front end
-            var message = {
-              'points': req.body.text,
-              'userName': req.body.user_name  + numVotes.toString(),
-              'channel': req.body.channel_name,
-              'uuid':uuid,
-              'votingComplete':votingComplete,
-              'chart':chart
-            }
-
-            io.sockets.emit('message', message)
+            return false
         }
 
+        //buildChart
+        userArr.push(req.body.user_name + numVotes.toString())
+        pointArr.push(req.body.text)
+        chart = utils.buildChart(userArr,pointArr)
+
+        //build message for front end
+        var message = {
+          'points': req.body.text,
+          'userName': req.body.user_name  + numVotes.toString(),
+          'channel': req.body.channel_name,
+          'uuid':uuid,
+          'votingComplete':votingComplete,
+          'chart':chart
+        }
+
+        io.sockets.emit('message', message)
         res.send(msg)
 
-        //return data & reset everything
-        // if (votingComplete){
-        //   message = ''
-        //   userArr = []
-        //   pointArr = []
-        //   numVotes = 0
-        //   votingComplete = false
-        // }else{
-          // io.sockets.emit('message', message);
-          // res.send(msg)
-        // }
 
     })
 

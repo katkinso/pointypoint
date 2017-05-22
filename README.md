@@ -8,3 +8,7 @@ Basic app for posting messages to slack and recording votes. Note in test mode r
 ## Todo
 - Allow users to post votes from their own user channel
 - Cleanup and remove jquery
+- Implement persistence
+- Modularize code and place in functions
+- Abstract away chat app
+- Consider adding task from jira

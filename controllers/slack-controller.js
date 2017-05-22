@@ -4,6 +4,7 @@ var client = new Client()
 var utils = require('../utils/utils')
 var fs = require('fs')
 
+//move this to gulp file ******
 if (fsExistsSync('config/local.js')) {
   var token = require('../config/local')
   token.setEnv()
@@ -17,26 +18,22 @@ function fsExistsSync(myDir) {
     return false;
   }
 }
+//move this to gulp file ******
 
+//where does this belong?  ******
 var slack_token = process.env['SLACK_VERIFICATION_TOKEN']
 var slack_post_token = process.env['SLACK_POST_TOKEN']
-
 
 var slack_args = {
   'path': {'team_id': 'T583UKKFS','channel_id': 'B58DWJSKT','slack_post_token': slack_post_token},
   'headers': { "Content-Type": "application/json" },
   'data': {
-      "text": "I am a test message x http://slack.com"
+      "text": "I am a default message"
   }
 }
 
 var fibonacci = [1, 2, 3, 5, 8, 13, 21]
-// var x = 4
-// console.log(fibonacci.indexOf(parseInt(x)) === -1)
-
-// https://hooks.slack.com/services/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
-
-
+ // ******
 
 var slackController = function(app,io){
 
@@ -44,10 +41,11 @@ var slackController = function(app,io){
     var numPeople = 0
     var numVotes = 0
     var votingComplete = false
-    var uuid = ''
+    // var uuid = ''
     var chart = ''
     var userArr = new Array()
     var pointArr = new Array()
+
 
     app.get('/',function(req,res){
         res.render('index')
@@ -55,10 +53,11 @@ var slackController = function(app,io){
 
     //Add task to slack
     app.post('/addtask',urlencodedParser,function(req,res){
+
           numPeople = 0
           numVotes = 0
           votingComplete = false
-          uuid = ''
+          // uuid = ''
           chart = ''
           userArr = []
           pointArr = []
@@ -100,7 +99,7 @@ var slackController = function(app,io){
             return false
         }
 
-        //tell if voting is done
+        //tell if vote is bad
         if (fibonacci.indexOf(parseInt(req.body.text)) === -1){
             res.send('invalid number. Number must be: 1, 2, 3, 5, 8, 13, 21')
             numVotes--
@@ -114,7 +113,7 @@ var slackController = function(app,io){
         }
 
         //buildChart
-        userArr.push(req.body.user_name + numVotes.toString())
+        userArr.push(req.body.user_name + numVotes.toString()) //generate people for dev. Remove XXXXXX
         pointArr.push(req.body.text)
         chart = utils.buildChart(userArr,pointArr)
 
@@ -123,14 +122,12 @@ var slackController = function(app,io){
           'points': req.body.text,
           'userName': req.body.user_name  + numVotes.toString(),
           'channel': req.body.channel_name,
-          'uuid':uuid,
           'votingComplete':votingComplete,
           'chart':chart
         }
 
         io.sockets.emit('message', message)
         res.send(msg)
-
 
     })
 

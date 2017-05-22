@@ -62,13 +62,13 @@ function postToSlack(){
 
   var taskName = $('#task_name').val()
   var numPeople = $('#num_people').val()
-  var uuid = generateUUID()
+  // var uuid = generateUUID()
 
 
   $.ajax({
     type: 'POST',
     url: '/addtask',
-    data: {'task_name':taskName,'num_people':numPeople,'uuid':uuid},
+    data: {'task_name':taskName,'num_people':numPeople},
     success: function(data){
       var div = $('<div />')
       var h3 = $('<h3 />')
